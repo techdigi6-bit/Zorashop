@@ -1,6 +1,3 @@
-import airImg from '../assets/air.png';
-import gunImg from '../assets/gun.png';
-
 export const products = [
   {
     id: 1,
@@ -40,7 +37,7 @@ export const products = [
     name: "Philips Air Fryer Low Watt",
     price: 650000,
     category: "Appliances",
-    image: airImg,
+    image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&q=80",
     rating: 4.6,
     reviews: 560,
     sold: 1800,
@@ -51,7 +48,7 @@ export const products = [
     name: "Gundam RX-78-2 Master Grade",
     price: 320000,
     category: "Hobby",
-    image: gunImg,
+    image: "https://images.unsplash.com/photo-1580414057403-c5f451f30e1c?w=400&q=80",
     rating: 4.9,
     reviews: 210,
     sold: 850,
