@@ -1,5 +1,5 @@
-import airImg from '../assets/air.jpg';
-import gunImg from '../assets/gun.jpg';
+import airImg from '../assets/air.png';
+import gunImg from '../assets/gun.png';
 
 export const products = [
   {
