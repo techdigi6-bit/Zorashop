@@ -2,9 +2,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, Shirt, Smartphone, Sparkles, Coffee, Gamepad2 } from 'lucide-react';
 import { products } from '../data/products';
-import heroElectronic from '../assets/hero-electronic.jpg';
-import heroPromo1 from '../assets/hero-promo1.jpg';
-import heroPromo2 from '../assets/hero-promo2.jpg';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -26,7 +23,7 @@ export default function Home() {
           {/* Main Hero Image (Electronic) */}
           <div className="w-2/3 h-full bg-gray-200 rounded-sm overflow-hidden relative">
             <img 
-              src={heroElectronic} 
+              src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&q=80" 
               alt="Hero Electronic" 
               className="w-full h-full object-cover"
             />
@@ -35,14 +32,14 @@ export default function Home() {
           <div className="w-1/3 flex flex-col gap-2 h-full">
             <div className="h-1/2 bg-gray-200 rounded-sm overflow-hidden relative">
               <img 
-                src={heroPromo1} 
+                src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80" 
                 alt="Promo 1" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="h-1/2 bg-gray-200 rounded-sm overflow-hidden relative">
               <img 
-                src={heroPromo2} 
+                src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400&q=80" 
                 alt="Promo 2" 
                 className="w-full h-full object-cover"
               />
