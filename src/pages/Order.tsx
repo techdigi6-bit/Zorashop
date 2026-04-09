@@ -6,7 +6,7 @@ export default function Order() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const state = location.state as { product: any, qty: number, total: number, delivery: string, address: string } | null;
+  const state = location.state as { product: any, qty: number, total: number, delivery: string, address: string, paymentMethod?: string } | null;
 
   useEffect(() => {
     if (!state) {
@@ -16,7 +16,7 @@ export default function Order() {
 
   if (!state) return null;
 
-  const { product, qty, total, delivery, address } = state;
+  const { product, qty, total, delivery, address, paymentMethod = 'Transfer Bank' } = state;
   const orderId = `ZRA-${Math.floor(Math.random() * 1000000000)}`;
 
   return (
@@ -39,7 +39,7 @@ export default function Order() {
             </div>
             <div className="flex justify-between py-2">
               <span className="text-gray-500">Metode Pembayaran</span>
-              <span className="font-medium text-gray-800">Transfer Bank</span>
+              <span className="font-medium text-gray-800">{paymentMethod}</span>
             </div>
           </div>
         </div>

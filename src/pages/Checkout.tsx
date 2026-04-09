@@ -7,6 +7,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const [delivery, setDelivery] = useState('Translink');
   const [address, setAddress] = useState('Jl. Jend. Sudirman No. 1, Jakarta Pusat, DKI Jakarta, 10220');
+  const [paymentMethod, setPaymentMethod] = useState('Transfer Bank');
 
   const state = location.state as { product: any, qty: number } | null;
 
@@ -30,7 +31,8 @@ export default function Checkout() {
         qty,
         total,
         delivery,
-        address
+        address,
+        paymentMethod
       }
     });
   };
@@ -46,7 +48,7 @@ export default function Checkout() {
           </div>
           <div className="flex flex-col md:flex-row md:items-center gap-4 text-sm md:text-base">
             <div className="font-medium text-gray-800 min-w-[150px]">
-              Budi Santoso (+62) 81234567890
+              Aria Darmawan (+62) 81234567890
             </div>
             <div className="text-gray-600 flex-1">
               <input 
@@ -113,8 +115,18 @@ export default function Checkout() {
               Metode Pembayaran:
             </div>
             <div className="flex gap-2">
-              <button className="border border-[#ee4d2d] text-[#ee4d2d] px-4 py-1.5 rounded-sm text-sm font-medium">Transfer Bank</button>
-              <button className="border border-gray-300 text-gray-700 px-4 py-1.5 rounded-sm text-sm font-medium">COD</button>
+              <button 
+                onClick={() => setPaymentMethod('Transfer Bank')}
+                className={`border px-4 py-1.5 rounded-sm text-sm font-medium transition-colors ${paymentMethod === 'Transfer Bank' ? 'border-[#ee4d2d] text-[#ee4d2d]' : 'border-gray-300 text-gray-700 hover:border-gray-400'}`}
+              >
+                Transfer Bank
+              </button>
+              <button 
+                onClick={() => setPaymentMethod('COD')}
+                className={`border px-4 py-1.5 rounded-sm text-sm font-medium transition-colors ${paymentMethod === 'COD' ? 'border-[#ee4d2d] text-[#ee4d2d]' : 'border-gray-300 text-gray-700 hover:border-gray-400'}`}
+              >
+                COD
+              </button>
             </div>
           </div>
         </div>
