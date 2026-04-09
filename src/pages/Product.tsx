@@ -33,6 +33,14 @@ export default function Product() {
   return (
     <div className="min-h-screen bg-[#f5f5f5] pb-20">
       <main className="max-w-6xl mx-auto mt-4 px-4">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="flex items-center gap-2 text-gray-600 hover:text-[#ee4d2d] transition-colors mb-4"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span>Kembali</span>
+        </button>
+        
         <div className="bg-white rounded-sm shadow-sm flex flex-col md:flex-row p-4 md:p-6 gap-6 md:gap-10">
           {/* Product Image */}
           <div className="w-full md:w-2/5">

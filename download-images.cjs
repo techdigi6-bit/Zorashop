@@ -1,24 +1,20 @@
 const fs = require('fs');
-const https = require('https');
 const path = require('path');
 
-const download = (url, dest) => {
-  return new Promise((resolve, reject) => {
-    const file = fs.createWriteStream(dest);
-    https.get(url, (response) => {
-      // Handle redirects
-      if (response.statusCode === 301 || response.statusCode === 302) {
-        return download(response.headers.location, dest).then(resolve).catch(reject);
-      }
-      response.pipe(file);
-      file.on('finish', () => {
-        file.close(resolve);
-      });
-    }).on('error', (err) => {
-      fs.unlink(dest, () => reject(err));
-    });
+async function download(url, dest) {
+  const response = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    }
   });
-};
+  
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+  }
+  
+  const buffer = await response.arrayBuffer();
+  fs.writeFileSync(dest, Buffer.from(buffer));
+}
 
 async function main() {
   const assetsDir = path.join(__dirname, 'src', 'assets');
@@ -33,8 +29,8 @@ async function main() {
   await download('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400&q=80', path.join(assetsDir, 'hero-promo2.jpg'));
   
   // For air fryer and gundam
-  await download('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Philips_Airfryer_%2816301389440%29.jpg/640px-Philips_Airfryer_%2816301389440%29.jpg', path.join(assetsDir, 'air.jpg'));
-  await download('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/RX-78-2_Gundam_%40_Odaiba_Diver_City_Project_%287635601264%29.jpg/640px-RX-78-2_Gundam_%40_Odaiba_Diver_City_Project_%287635601264%29.jpg', path.join(assetsDir, 'gun.jpg'));
+  await download('https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&q=80', path.join(assetsDir, 'air.jpg'));
+  await download('https://images.unsplash.com/photo-1580414057403-c5f451f30e1c?w=400&q=80', path.join(assetsDir, 'gun.jpg'));
   
   console.log('All images downloaded successfully!');
 }
