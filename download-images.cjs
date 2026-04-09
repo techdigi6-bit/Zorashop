@@ -28,10 +28,6 @@ async function main() {
   await download('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80', path.join(assetsDir, 'hero-promo1.jpg'));
   await download('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400&q=80', path.join(assetsDir, 'hero-promo2.jpg'));
   
-  // For air fryer and gundam
-  await download('https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&q=80', path.join(assetsDir, 'air.jpg'));
-  await download('https://images.unsplash.com/photo-1580414057403-c5f451f30e1c?w=400&q=80', path.join(assetsDir, 'gun.jpg'));
-  
   console.log('All images downloaded successfully!');
 }
 
